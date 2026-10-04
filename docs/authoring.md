@@ -168,6 +168,12 @@ See [`docs/testing.md`](testing.md) for how to run evals.
 7. All `RULE-<PREFIX>-<NN>` IDs use a prefix listed in the registry above.
 8. Any trigger phrase or API name in `description:` can be found by grep in the upstream SDK source.
 
+9. Each skill has an entry in `delivery/skillstore-teams.yaml` with `release`, `short_description`, and target `teams`.
+10. Any skill file change includes a release bump in the same PR; Team-only changes do not require one.
+11. Skill deletions remove both the directory and manifest entry, preserving managed Teams for cleanup.
+
+Full delivery rules and examples: [`delivery/README.md`](../delivery/README.md). Publisher credentials and the default SkillStore catalog category are configured in CI, not by skill authors.
+
 ## See also
 
 - [`docs/schemas.md`](schemas.md) — canonical JSON shapes for `evals.json`, `grading.json`, `benchmark.json`.

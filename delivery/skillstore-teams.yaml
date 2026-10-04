@@ -1,3 +1,4 @@
+# Contributor rules: delivery/README.md (README.md next to this file).
 # Format version of this delivery manifest, not a skill release.
 schema_version: 1
 
@@ -6,6 +7,7 @@ managed_teams:
   - ydb-app-developers
 
 # The publisher account, credentials and default SkillStore category belong in CI configuration.
+# Initial CI category for new skills: devtools/infra. Do not set it per skill here.
 # Keys below match skills/<slug>/ and the slug used by the SkillStore API.
 # Bump release when any file in a skill changes; Team-only changes need no bump.
 # release is our SemVer; SkillStore assigns its own version during upload.

@@ -133,6 +133,8 @@ Details — adding tests, adding models, reading the matrix, known gaps — in [
 
 Read [`docs/authoring.md`](docs/authoring.md) before adding content. The short version: stay grounded in upstream YDB SDK source, don't invent rules from memory, one `RULE-<PREFIX>-<NN>` prefix per category claimed in the registry on first use, keep SKILL.md bodies short.
 
+For SkillStore delivery, also follow [`delivery/README.md`](delivery/README.md): register every skill in the delivery manifest, choose target Teams, and bump its release whenever its files change. The catalog category and publisher account are CI settings.
+
 ## License
 
 Apache-2.0
