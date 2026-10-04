@@ -1,0 +1,8 @@
+# Map skill slugs to the SkillStore Team slugs that should include them.
+skills:
+  ydb-core:
+    teams: [ydb-app-developers]
+  ydb-table:
+    teams: [ydb-app-developers]
+  ydb-docs:
+    teams: [ydb-app-developers]
