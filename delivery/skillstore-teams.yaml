@@ -1,8 +1,29 @@
-# Map skill slugs to the SkillStore Team slugs that should include them.
+# Format version of this delivery manifest, not a skill release.
+schema_version: 1
+
+# Keep a Team here even after its last skill is removed, so CI can clean it up.
+managed_teams:
+  - ydb-app-developers
+
+# The publisher account and credentials belong in CI configuration.
+# Keys below match skills/<slug>/ and the slug used by the SkillStore API.
+# Bump release when any file in a skill changes; Team-only changes need no bump.
+# release is our SemVer; SkillStore assigns its own version during upload.
+# CI records our release in changelog and in a generated SKILL.md comment.
+# category_path and short_description are metadata for the SkillStore upload.
 skills:
   ydb-core:
+    release: "1.0.0"
+    short_description: "Разработка приложений с YDB: подключение, SDK и основные возможности."
+    category_path: devtools/infra
     teams: [ydb-app-developers]
   ydb-table:
+    release: "1.0.0"
+    short_description: "Таблицы, запросы и работа с данными в YDB."
+    category_path: devtools/infra
     teams: [ydb-app-developers]
   ydb-docs:
+    release: "1.0.0"
+    short_description: "Поиск официальной документации YDB."
+    category_path: support/knowledge
     teams: [ydb-app-developers]
