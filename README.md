@@ -133,7 +133,7 @@ Details — adding tests, adding models, reading the matrix, known gaps — in [
 
 Read [`docs/authoring.md`](docs/authoring.md) before adding content. The short version: stay grounded in upstream YDB SDK source, don't invent rules from memory, one `RULE-<PREFIX>-<NN>` prefix per category claimed in the registry on first use, keep SKILL.md bodies short.
 
-Before publishing a skill, follow the [SkillStore publication requirements](delivery/README.md).
+Before publishing a skill, follow the [Skill publication requirements](delivery/README.md).
 
 ## License
 

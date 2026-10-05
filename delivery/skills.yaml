@@ -1,0 +1,18 @@
+# Publication requirements: README.md next to this file.
+# This is the manifest format version, not a skill release.
+schema_version: 1
+
+# Keys match skills/<name>/ and SKILL.md frontmatter name.
+# Increase release whenever any file in a skill directory changes.
+# Arcadia CI records imported releases; SkillStore assigns its own versions.
+# SkillStore Team membership is maintained manually outside this manifest.
+skills:
+  ydb-core:
+    release: "1.0.0"
+    short_description: "Разработка приложений с YDB: подключение, SDK и основные возможности."
+  ydb-table:
+    release: "1.0.0"
+    short_description: "Таблицы, запросы и работа с данными в YDB."
+  ydb-docs:
+    release: "1.0.0"
+    short_description: "Поиск официальной документации YDB."
