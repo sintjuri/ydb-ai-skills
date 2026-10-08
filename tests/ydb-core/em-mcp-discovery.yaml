@@ -1,0 +1,17 @@
+description: EM MCP · Discover databases without admin-only cluster enumeration
+
+vars:
+  user_prompt: |
+    Show my YDB databases through the connected Enterprise Manager MCP.
+    The session exposes ydb-get-databases with required cluster_name and
+    ydb-get-database-info, but no ydb-get-clusters. I have not supplied a
+    cluster. What do you do next?
+
+assert:
+  - type: llm-rubric
+    value: |
+      The response should ask for the cluster before listing databases.
+      It should not invent a cluster, select an arbitrary database, call
+      unavailable ydb-get-clusters, or request admin credentials merely
+      because cluster enumeration is unavailable. It may explain that the
+      visible tools depend on the session's permissions.

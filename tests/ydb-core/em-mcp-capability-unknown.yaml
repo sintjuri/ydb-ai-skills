@@ -1,0 +1,16 @@
+description: EM MCP · Missing flag inspection does not mean feature disabled
+
+vars:
+  user_prompt: |
+    Can I use full-text search in my YDB database? EM MCP is connected, but
+    ydb-get-feature_flags is absent from this non-admin session. The server
+    version has not been provided. I found a recipe in the main docs.
+
+assert:
+  - type: llm-rubric
+    value: |
+      The response should obtain the target server version and relevant
+      feature-state evidence, or state that support is conditional until
+      those are known. It should not conclude that full-text search is
+      disabled because the tool is absent, promise support from main docs,
+      substitute the client version, or try unavailable admin-only tools.

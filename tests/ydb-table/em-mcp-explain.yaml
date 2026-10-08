@@ -1,0 +1,19 @@
+description: EM MCP · Optimize by schema and plan without executing
+
+vars:
+  user_prompt: |
+    Optimize this query through Enterprise Manager MCP; don't execute it:
+    SELECT order_id, status FROM `app/orders` WHERE status = 'new' LIMIT 100;
+    The target is cluster c1, database /team/orders. Tools available are
+    ydb-describe and ydb-exec-query; the table schema is unknown. Outline
+    your tool calls. If explain reports an unknown column, what do you do?
+
+assert:
+  - type: llm-rubric
+    value: |
+      The response should inspect app/orders with ydb-describe and
+      detail schema, preserve c1 and /team/orders, then explain the query
+      with ydb-exec-query action explain-query and explicit query text.
+      It should fix semantic errors by consulting the schema and explaining
+      again, without executing. It should not invent indexes, claim LIMIT
+      bounds the scan cost, or assert measured speedup from a plan alone.

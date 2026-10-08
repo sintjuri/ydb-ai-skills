@@ -50,6 +50,9 @@ _messages: &messages
       ══════════════════════════════════════════════════════════════════════════
       {{ ydb_core }}
 
+      --- ydb-core / references / em-mcp.md ---
+      {{ ydb_core_refs_em_mcp }}
+
       --- ydb-core / references / balancing.md ---
       {{ ydb_core_refs_balancing }}
 
@@ -75,6 +78,9 @@ _messages: &messages
 
       --- ydb-table / references / query-parameters.md ---
       {{ ydb_table_refs_query_parameters }}
+
+      --- ydb-table / references / em-mcp.md ---
+      {{ ydb_table_refs_em_mcp }}
 
       --- ydb-table / references / cli.md ---
       {{ ydb_table_refs_cli }}
@@ -230,6 +236,7 @@ defaultTest:
   vars:
     ydb_docs: file://skills/ydb-docs/SKILL.md
     ydb_core: file://skills/ydb-core/SKILL.md
+    ydb_core_refs_em_mcp: file://skills/ydb-core/references/em-mcp.md
     ydb_core_refs_balancing: file://skills/ydb-core/references/balancing.md
     ydb_core_refs_session_lifecycle: file://skills/ydb-core/references/session-lifecycle.md
     ydb_core_refs_go: file://skills/ydb-core/references/embed/go.md
@@ -237,6 +244,7 @@ defaultTest:
     ydb_table: file://skills/ydb-table/SKILL.md
     ydb_table_refs_working_with_data: file://skills/ydb-table/references/working-with-data.md
     ydb_table_refs_query_parameters: file://skills/ydb-table/references/query-parameters.md
+    ydb_table_refs_em_mcp: file://skills/ydb-table/references/em-mcp.md
     ydb_table_refs_cli: file://skills/ydb-table/references/cli.md
     ydb_table_refs_java: file://skills/ydb-table/references/embed/java.md
     ydb_table_rules_java: file://skills/ydb-table/rules/embed/java.md

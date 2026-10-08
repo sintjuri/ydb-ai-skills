@@ -1,0 +1,6 @@
+description: Routing · EM MCP query plan → ydb-table
+vars:
+  user_prompt: Explain my SQL query using ydb-exec-query in YDB EM MCP.
+assert:
+  - type: regex
+    value: '^\s*ydb-table\s*$'

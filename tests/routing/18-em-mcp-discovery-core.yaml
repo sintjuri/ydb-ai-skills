@@ -1,0 +1,6 @@
+description: Routing · EM MCP database discovery → ydb-core
+vars:
+  user_prompt: Show my YDB databases through YDB EM MCP and inspect a directory.
+assert:
+  - type: regex
+    value: '^\s*ydb-core\s*$'

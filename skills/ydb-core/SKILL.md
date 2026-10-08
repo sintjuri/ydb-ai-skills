@@ -1,6 +1,6 @@
 ---
 name: ydb-core
-description: Entry point and router for YDB-related work. Orients an LLM about YDB — what it is, what surfaces it exposes, where to read upstream docs, which specialist skill to load for surface-specific questions. Covers SDK packages, connection strings and auth, local Docker, schema fundamentals, YDB CLI command discovery and scheme inspection, common integrations (ORMs, migration tools, Terraform), client-side balancing, and session lifecycle / resilience under rolling restart. Use when the user asks a general YDB question, mentions YDB without naming a specific surface (queries, topics, coordination), needs setup help, wants to inspect a database with YDB CLI, asks about balancing policies, end-to-end deadline propagation, caller cancellation, shared retry budgets, `BAD_SESSION` / `shutdownHint` / rolling restart, or when another YDB skill needs foundational context. Also triggers on `grpcs://` / `grpc://`, `ydb --help`, `ydb version`, `ydb config profile`, `ydb config info`, `ydb discovery`, `ydb scheme`, `balancers.RandomChoice`, `balancers.PreferNearestDC`, `ydb.WithBalancer`, `session-balancer`, and "getting started with YDB" prompts.
+description: Entry point and router for YDB-related work. Orients an LLM about YDB — what it is, what surfaces it exposes, where to read upstream docs, which specialist skill to load for surface-specific questions. Covers SDK packages, connection strings and auth, local Docker, schema fundamentals, YDB CLI command discovery and scheme inspection, YDB Enterprise Manager MCP discovery and database inspection, common integrations (ORMs, migration tools, Terraform), client-side balancing, and session lifecycle / resilience under rolling restart. Use when the user asks a general YDB question, mentions YDB without naming a specific surface (queries, topics, coordination), needs setup help, wants to inspect a database with YDB CLI or EM MCP, asks about balancing policies, end-to-end deadline propagation, caller cancellation, shared retry budgets, `BAD_SESSION` / `shutdownHint` / rolling restart, or when another YDB skill needs foundational context. Also triggers on "YDB EM MCP", "my YDB databases", `ydb-get-databases`, `ydb-get-scheme-directory`, `grpcs://` / `grpc://`, `ydb --help`, `ydb version`, `ydb config profile`, `ydb config info`, `ydb discovery`, `ydb scheme`, `balancers.RandomChoice`, `balancers.PreferNearestDC`, `ydb.WithBalancer`, `session-balancer`, and "getting started with YDB" prompts.
 ---
 
 # YDB Core
@@ -87,6 +87,14 @@ Apply execution gates by effect, not by the command's name:
 - Treat `ydb admin` as high risk and outside this skill's operational scope. Its commands can damage a cluster and may require explicit global parameters even when another command would use a default profile; inspect `ydb admin --help` and request the missing target context rather than constructing a command from memory.
 
 YDB CLI AI-mode implementation source: https://github.com/ydb-platform/ydb/blob/0c0d3f432c737269b0b91a2ec93cf76a8b76d00d/ydb/public/lib/ydb_cli/commands/interactive/ai/ai_model_handler.cpp. CLI command reference: https://ydb.tech/docs/en/reference/ydb-cli/commands.
+
+## em-mcp
+
+When the user wants to inspect a real database through YDB Enterprise Manager MCP, load [references/em-mcp.md](references/em-mcp.md). The MCP server performs operations; this skill selects the target and the inspection workflow. Discover the tools and their schemas available to the current session before calling them; the set depends on deployment and permissions. Skill installation does not connect the server.
+
+Implementation reference: [EM MCP server](https://a.yandex-team.ru/arcadia/kikimr/meta/handlers/meta_mcp_server.cpp) (Yandex internal; names and schemas verified on 2026-10-08).
+
+Route SQL execution and plan analysis through EM MCP to `ydb-table`, which carries the query workflow. Keep the CLI and documentation routes available when MCP is not connected; report the missing connection rather than claiming that a tool ran.
 
 ## connecting
 
